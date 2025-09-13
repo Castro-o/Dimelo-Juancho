@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 @theme inline {
@@ -14,13 +14,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #eeeeee;
+    --foreground: #0f0f0f;
   }
 }
 
 body {
-  background: var(--background);
+  background: url('/BG_loading-blue.png') center/cover no-repeat fixed;
+  background-color: rgba(0,0,0,0.8);
+  background-blend-mode: overlay;
+  backdrop-filter: blur(2px);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }
