@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    "src": "/jerridi/houston.png",
+    "src": "/jerridi/Houston.png",
     "title": "Jerry Di",
     "subtitle": "Texas - 07 Noviembre",
     "link": "https://www.tickeri.com/events/vjckti8ztnvw/jerry-di-en-concierto-houston-texas"
