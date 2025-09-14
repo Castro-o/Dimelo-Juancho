@@ -45,15 +45,15 @@ export default function Page() {
   }
 
   return (
-    <div className="relative min-h-screen flex flex-col">
+    <div className="relative flex flex-col">
       <Header 
         isSearchOpen={showSearch}
         onSearchToggle={handleSearchToggle}
         onSearch={handleSearch}
         searchTerm={searchTerm}
       />
-      <main className="flex-1 flex items-center justify-center">
-      <Carrossel searchTerm={searchTerm} />
+      <main className="min-h-screen flex items-center justify-center py-20">
+        <Carrossel searchTerm={searchTerm} />
       </main>
       <Footer />
     </div>

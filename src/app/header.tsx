@@ -18,7 +18,7 @@ export function Header({ isSearchOpen, onSearchToggle, onSearch, searchTerm }: H
         style={{ flexShrink: 0 }}
       />
 
-      <p className="flex-1 text-center text-amber-50 z-10 text-xs md:text-sm lg:text-base">
+      <p className="flex-1 text-center text-white z-10 text-xs md:text-sm lg:text-base">
          <span className="font-bold"> Welcome </span> to our world
       </p>
 

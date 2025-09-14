@@ -6,36 +6,36 @@ import React, { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
-  { 
-    src: "/jerridi/Salt-Lake-City.png", 
-    title: "Jerri Di", 
-    subtitle: "Utah - 05 Diciembre", 
-    link: "https://www.tickeri.com/events/v4ksf2n3xan6/jerry-di-en-concierto-salt-lake-city-utah" 
+  {
+    "src": "/jerridi/houston.png",
+    "title": "Jerry Di",
+    "subtitle": "Texas - 07 Noviembre",
+    "link": "https://www.tickeri.com/events/vjckti8ztnvw/jerry-di-en-concierto-houston-texas"
   },
-  { 
-    src: "/jerridi/houston.png", 
-    title: "Jerri Di", 
-    subtitle: "Texas - 07 Noviembre", 
-    link: "https://www.tickeri.com/events/vjckti8ztnvw/jerry-di-en-concierto-houston-texas" 
+  {
+    "src": "/jerridi/Miami.png",
+    "title": "Jerry Di",
+    "subtitle": "Florida - 08 Noviembre",
+    "link": "https://www.tickeri.com/events/xvvxpnppjn9k/jerry-di-en-concierto-miami-florida"
   },
-  { 
-    src: "/jerridi/Miami.png", 
-    title: "Jerri Di", 
-    subtitle: "Florida - 08 Noviembre", 
-    link: "https://www.tickeri.com/events/xvvxpnppjn9k/jerry-di-en-concierto-miami-florida" 
+  {
+    "src": "/jerridi/Bueno-Aires.png",
+    "title": "Jerry Di",
+    "subtitle": "Argentina - 14 Noviembre",
+    "link": "https://www.passline.com/eventos/jerry-di-en-concierto-buenos-aires"
   },
-  { 
-    src: "/jerridi/Orlando.png", 
-    title: "Jerri Di", 
-    subtitle: "Eua - 21 Noviembre", 
-    link: "https://www.tickeri.com/events/2pjjo4ggiroy/jerry-di-en-concierto-orlando-florida" 
+  {
+    "src": "/jerridi/Orlando.png",
+    "title": "Jerry Di",
+    "subtitle": "Eua - 21 Noviembre",
+    "link": "https://www.tickeri.com/events/2pjjo4ggiroy/jerry-di-en-concierto-orlando-florida"
   },
-    { 
-    src: "/jerridi/Bueno-Aires.png", 
-    title: "Jerri Di", 
-    subtitle: "Argentina - 14 Noviembre", 
-    link: "https://www.passline.com/eventos/jerry-di-en-concierto-buenos-aires" 
-  },
+  {
+    "src": "/jerridi/Salt-Lake-City.png",
+    "title": "Jerry Di",
+    "subtitle": "Utah - 05 Diciembre",
+    "link": "https://www.tickeri.com/events/v4ksf2n3xan6/jerry-di-en-concierto-salt-lake-city-utah"
+  }
 ];
 
 interface CarrosselProps {
@@ -79,7 +79,7 @@ export default function Carrossel({ searchTerm = "" }: CarrosselProps) {
   });
 
   return (
-    <section className="relative w-full max-w-6xl mx-auto">
+    <section className="relative w-full max-w-6xl mx-auto pb-16 md:pb-8">
       <div ref={emblaRef} className="overflow-hidden">
         <div className="flex gap-0">
           {filteredSlides.length === 0 && searchTerm ? (
@@ -97,7 +97,7 @@ export default function Carrossel({ searchTerm = "" }: CarrosselProps) {
                 className="block cursor-pointer transition-transform duration-300 hover:scale-[0.98]"
               >
                 <article className="relative overflow-hidden rounded-md shadow-lg h-full">
-                  <div className="w-full h-[620px] sm:h-[520px] md:h-[580px] lg:h-[580px] relative">
+                  <div className="w-full h-[580px] sm:h-[520px] md:h-[580px] lg:h-[580px] relative">
                     <Image
                       src={s.src}
                       alt={s.title}
@@ -109,7 +109,7 @@ export default function Carrossel({ searchTerm = "" }: CarrosselProps) {
 
                   {/* caption overlay */}
                   <div className="absolute inset-0 flex flex-col items-center justify-end pb-6 md:pb-4 pointer-events-none">
-                    <p className="text-blue-950 text-3xl font-bold px-3 py-0">{s.title}</p>
+                    <p className="text-black text-3xl font-bold px-3 py-0">{s.title}</p>
                     <p className="text-black text-lg font-medium">
                       <span className="font-bold">{s.subtitle.split(" - ")[0]}</span>
                       {" - " + s.subtitle.split(" - ")[1]}
@@ -130,7 +130,7 @@ export default function Carrossel({ searchTerm = "" }: CarrosselProps) {
         <ChevronRight size={14} />
       </button>
 
-      <div className="flex items-center justify-center mt-6">
+      <div className="flex items-center justify-center mt-8 mb-4">
         {emblaApi && emblaApi.scrollSnapList().map((_, i) => (
           <button
             key={i}
