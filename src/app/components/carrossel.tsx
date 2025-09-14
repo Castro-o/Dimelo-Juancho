@@ -3,7 +3,7 @@
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import React, { useCallback, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, Search, X } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   { 
@@ -39,11 +39,10 @@ const slides = [
 ];
 
 interface CarrosselProps {
-  showSearch?: boolean;
   searchTerm?: string;
 }
 
-export default function Carrossel({ showSearch = false, searchTerm = "" }: CarrosselProps) {
+export default function Carrossel({ searchTerm = "" }: CarrosselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "center",
     containScroll: "trimSnaps",
@@ -85,7 +84,7 @@ export default function Carrossel({ showSearch = false, searchTerm = "" }: Carro
         <div className="flex gap-0">
           {filteredSlides.length === 0 && searchTerm ? (
             <div className="w-full text-center py-20">
-              <p className="text-white text-lg">Nenhum resultado encontrado para "{searchTerm}"</p>
+              <p className="text-white text-lg">Nenhum resultado encontrado para &ldquo;{searchTerm}&rdquo;</p>
             </div>
           ) : (
             filteredSlides.map((s, idx) => (

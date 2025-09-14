@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { MagnifyingGlass, X } from "phosphor-react";
 
 interface SearchBoxProps {
