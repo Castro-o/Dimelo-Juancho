@@ -52,7 +52,7 @@ export function SearchBox({ isOpen, onToggle, onSearch, searchTerm }: SearchBoxP
   return (
     <button 
       onClick={onToggle}
-      className="py-1 px-2 rounded-[8px] flex items-center justify-center md:w-auto md:px-4 md:py-2 gap-4 bg-[rgba(217,217,217,0.1)]"
+      className="py-1 px-2 rounded-[8px] flex items-center justify-center cursor-pointer md:w-auto md:px-4 md:py-2 gap-4 bg-[rgba(217,217,217,0.1)]"
     >
       <MagnifyingGlass
         className="inline-block"
@@ -60,7 +60,7 @@ export function SearchBox({ isOpen, onToggle, onSearch, searchTerm }: SearchBoxP
         weight="fill"
         color="#399BEB"
       />
-      <span className="text-white hidden md:inline">Search</span>
+      <span className="text-white/40 hover:text-blue-50 hidden md:inline">Search</span>
     </button>
   );
 }
