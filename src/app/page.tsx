@@ -9,6 +9,19 @@ import Carrossel from "./components/carrossel";
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchToggle = () => {
+    setShowSearch(!showSearch);
+    if (showSearch) {
+      setSearchTerm(""); // Limpa a busca quando fecha
+    }
+  };
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+  };
 
   useEffect(() => {
     // Inicia o fade out depois de 1.5 segundos
@@ -33,9 +46,14 @@ export default function Page() {
 
   return (
     <div className="relative min-h-screen flex flex-col">
-      <Header />
+      <Header 
+        isSearchOpen={showSearch}
+        onSearchToggle={handleSearchToggle}
+        onSearch={handleSearch}
+        searchTerm={searchTerm}
+      />
       <main className="flex-1 flex items-center justify-center">
-      <Carrossel/>
+      <Carrossel showSearch={showSearch} searchTerm={searchTerm} />
       </main>
       <Footer />
     </div>

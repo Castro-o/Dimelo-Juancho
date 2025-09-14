@@ -3,36 +3,47 @@
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import React, { useCallback, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Search, X } from "lucide-react";
 
 const slides = [
   { 
-    src: "/Chacin5.png", 
+    src: "/jerridi/Salt-Lake-City.png", 
     title: "Jerri Di", 
-    subtitle: "Bogota - 27 noviembre", 
-    link: "https://example.com/jerri-di" 
-  },
-  { 
-    src: "/bodapost2.jpg", 
-    title: "Jerri Silva", 
-    subtitle: "São Paulo - 15 dezembro", 
-    link: "https://example.com/jerri-silva" 
-  },
-  { 
-    src: "/JerridiBuenosaires.png", 
-    title: "Jerri Santos", 
-    subtitle: "Rio de Janeiro - 20 janeiro", 
-    link: "https://example.com/jerri-santos" 
-  },
-  { 
-    src: "/JerridiBuenosaires.png", 
-    title: "Jerri Santos", 
-    subtitle: "Rio de Janeiro - 20 janeiro", 
+    subtitle: "Utah - 05 Diciembre", 
     link: "https://www.tickeri.com/events/v4ksf2n3xan6/jerry-di-en-concierto-salt-lake-city-utah" 
+  },
+  { 
+    src: "/jerridi/houston.png", 
+    title: "Jerri Di", 
+    subtitle: "Texas - 07 Noviembre", 
+    link: "https://www.tickeri.com/events/vjckti8ztnvw/jerry-di-en-concierto-houston-texas" 
+  },
+  { 
+    src: "/jerridi/Miami.png", 
+    title: "Jerri Di", 
+    subtitle: "Florida - 08 Noviembre", 
+    link: "https://www.tickeri.com/events/xvvxpnppjn9k/jerry-di-en-concierto-miami-florida" 
+  },
+  { 
+    src: "/jerridi/Orlando.png", 
+    title: "Jerri Di", 
+    subtitle: "Eua - 21 Noviembre", 
+    link: "https://www.tickeri.com/events/2pjjo4ggiroy/jerry-di-en-concierto-orlando-florida" 
+  },
+    { 
+    src: "/jerridi/Bueno-Aires.png", 
+    title: "Jerri Di", 
+    subtitle: "Argentina - 14 Noviembre", 
+    link: "https://www.passline.com/eventos/jerry-di-en-concierto-buenos-aires" 
   },
 ];
 
-export default function Carrossel() {
+interface CarrosselProps {
+  showSearch?: boolean;
+  searchTerm?: string;
+}
+
+export default function Carrossel({ showSearch = false, searchTerm = "" }: CarrosselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "center",
     containScroll: "trimSnaps",
@@ -59,11 +70,25 @@ export default function Carrossel() {
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
+  // Filtrar slides baseado no termo de busca
+  const filteredSlides = slides.filter((slide) => {
+    const query = searchTerm.toLowerCase();
+    return (
+      slide.title.toLowerCase().includes(query) ||
+      slide.subtitle.toLowerCase().includes(query)
+    );
+  });
+
   return (
     <section className="relative w-full max-w-6xl mx-auto">
       <div ref={emblaRef} className="overflow-hidden">
         <div className="flex gap-0">
-          {slides.map((s, idx) => (
+          {filteredSlides.length === 0 && searchTerm ? (
+            <div className="w-full text-center py-20">
+              <p className="text-white text-lg">Nenhum resultado encontrado para "{searchTerm}"</p>
+            </div>
+          ) : (
+            filteredSlides.map((s, idx) => (
             <div key={idx} className="flex-none w-full sm:w-1/2 md:w-1/2 lg:w-1/3 px-2">
               {/* Envolvendo o card com Link */}
               <a 
@@ -94,24 +119,25 @@ export default function Carrossel() {
                 </article>
               </a>
             </div>
-          ))}
+          ))
+          )}
         </div>
       </div>
 
-      <button onClick={scrollPrev} aria-label="Anterior" className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 text-black drop-shadow z-30 hover:bg-[#399BEB]">
+      <button onClick={scrollPrev} aria-label="Anterior" className="absolute -left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 text-black drop-shadow z-30 hover:bg-[#399BEB]">
         <ChevronLeft size={14} />
       </button>
-      <button onClick={scrollNext} aria-label="Próximo" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 text-black drop-shadow z-30 hover:bg-[#399BEB]">
+      <button onClick={scrollNext} aria-label="Próximo" className="absolute -right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 text-black drop-shadow z-30 hover:bg-[#399BEB]">
         <ChevronRight size={14} />
       </button>
 
-      <div className="flex items-center size-6 justify-center mt-6">
-        {slides.map((_, i) => (
+      <div className="flex items-center justify-center mt-6">
+        {emblaApi && emblaApi.scrollSnapList().map((_, i) => (
           <button
             key={i}
             onClick={() => emblaApi && emblaApi.scrollTo(i)}
-            aria-label={`Ir para slide ${i + 1}`}
-            className={`mx-2 w-3 h-3 rounded-full ${selectedIndex === i ? "bg-white" : "bg-white/40"}`}
+            aria-label={`Ir para página ${i + 1}`}
+            className={`mx-2 w-2 h-2 rounded-full ${selectedIndex === i ? "bg-white" : "bg-white/40"}`}
           />
         ))}
       </div>
