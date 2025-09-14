@@ -53,7 +53,7 @@ export default function Page() {
         searchTerm={searchTerm}
       />
       <main className="flex-1 flex items-center justify-center">
-      <Carrossel showSearch={showSearch} searchTerm={searchTerm} />
+      <Carrossel searchTerm={searchTerm} />
       </main>
       <Footer />
     </div>
