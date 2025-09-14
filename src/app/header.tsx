@@ -1,7 +1,14 @@
 "use client";
-import { MagnifyingGlass } from "phosphor-react";
+import { SearchBox } from "./components/SearchBox";
 
-export function Header() {
+interface HeaderProps {
+  isSearchOpen: boolean;
+  onSearchToggle: () => void;
+  onSearch: (term: string) => void;
+  searchTerm: string;
+}
+
+export function Header({ isSearchOpen, onSearchToggle, onSearch, searchTerm }: HeaderProps) {
   return (
     <header className="absolute w-full max-w-7xl mx-auto flex items-center top-3 px-6 gap-x-4 md:gap-x-16 z-10 left-0 right-0">
       <img
@@ -15,16 +22,12 @@ export function Header() {
          <span className="font-bold"> Welcome </span> to our world
       </p>
 
-      <button className=" py-1 px-2 rounded-[8px] flex items-center justify-center  md:w-auto md:px-4 md:py-2 gap-4 bg-[rgba(217,217,217,0.1)]">
-        <MagnifyingGlass
-          className="inline-block"
-          size={28}
-          weight="fill"
-          color="#399BEB"
-        />
-
-        <span className="text-white hidden md:inline">Search</span>
-      </button>
+      <SearchBox 
+        isOpen={isSearchOpen}
+        onToggle={onSearchToggle}
+        onSearch={onSearch}
+        searchTerm={searchTerm}
+      />
     </header>
   );
 }
