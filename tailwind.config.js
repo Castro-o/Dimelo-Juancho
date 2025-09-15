@@ -7,6 +7,9 @@ module.exports = {
       colors: {
         'cinza-transparente': 'rgba(217,30,30,0.8)',
       },
+      fontFamily: {
+        'dm-serif': ['var(--font-dm-serif)', 'serif'],
+      },
     },
   },
   plugins: [],

@@ -28,12 +28,12 @@ export function SearchBox({ isOpen, onToggle, onSearch, searchTerm }: SearchBoxP
         <MagnifyingGlass
           size={28}
           weight="fill"
-          color="#399BEB"
+          color="white"
         />
         <input
           ref={inputRef}
           type="text"
-          placeholder="Pesquisar..."
+          placeholder="Search..."
           value={searchTerm}
           onChange={handleInputChange}
           className="bg-transparent text-white placeholder-gray-300 border-none outline-none text-sm md:text-base w-32 md:w-48"
@@ -41,7 +41,7 @@ export function SearchBox({ isOpen, onToggle, onSearch, searchTerm }: SearchBoxP
         <button
           onClick={onToggle}
           className="p-1 hover:bg-white/20 rounded"
-          aria-label="Fechar pesquisa"
+          aria-label="Close search"
         >
           <X size={20} color="white" />
         </button>

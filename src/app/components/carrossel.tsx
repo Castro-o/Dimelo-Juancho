@@ -4,36 +4,43 @@ import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import React, { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { DM_Serif_Display } from "next/font/google";
+
+// Configurar a fonte DM Serif
+const dmSerif = DM_Serif_Display({
+  subsets: ['latin'],
+  weight: ['400'],
+});
 
 const slides = [
   {
     "src": "/jerridi/Houston.png",
     "title": "Jerry Di",
-    "subtitle": "Texas - 07 Noviembre",
+    "subtitle": "HOUSTON, TX - NOV 7",
     "link": "https://www.tickeri.com/events/vjckti8ztnvw/jerry-di-en-concierto-houston-texas"
   },
   {
     "src": "/jerridi/Miami.png",
     "title": "Jerry Di",
-    "subtitle": "Florida - 08 Noviembre",
+    "subtitle": "MIAMI, FL - NOV 8",
     "link": "https://www.tickeri.com/events/xvvxpnppjn9k/jerry-di-en-concierto-miami-florida"
   },
   {
     "src": "/jerridi/Bueno-Aires.png",
     "title": "Jerry Di",
-    "subtitle": "Argentina - 14 Noviembre",
+    "subtitle": "BUENOS AIRES - NOV 14",
     "link": "https://www.passline.com/eventos/jerry-di-en-concierto-buenos-aires"
   },
   {
     "src": "/jerridi/Orlando.png",
     "title": "Jerry Di",
-    "subtitle": "Eua - 21 Noviembre",
+    "subtitle": "ORLANDO, FL - NOV 21",
     "link": "https://www.tickeri.com/events/2pjjo4ggiroy/jerry-di-en-concierto-orlando-florida"
   },
   {
     "src": "/jerridi/Salt-Lake-City.png",
     "title": "Jerry Di",
-    "subtitle": "Utah - 05 Diciembre",
+    "subtitle": "SALT LAKE CITY, UT - DIC 5",
     "link": "https://www.tickeri.com/events/v4ksf2n3xan6/jerry-di-en-concierto-salt-lake-city-utah"
   }
 ];
@@ -84,7 +91,7 @@ export default function Carrossel({ searchTerm = "" }: CarrosselProps) {
         <div className="flex gap-0">
           {filteredSlides.length === 0 && searchTerm ? (
             <div className="w-full text-center py-20">
-              <p className="text-white text-lg">Nenhum resultado encontrado para &ldquo;{searchTerm}&rdquo;</p>
+              <p className="text-white text-lg">No results found for &ldquo;{searchTerm}&rdquo;</p>
             </div>
           ) : (
             filteredSlides.map((s, idx) => (
@@ -102,6 +109,8 @@ export default function Carrossel({ searchTerm = "" }: CarrosselProps) {
                       src={s.src}
                       alt={s.title}
                       fill
+                      quality={95}
+                      priority={idx < 3}
                       className="object-contain sm:object-cover"
                       sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
                     />
@@ -109,8 +118,8 @@ export default function Carrossel({ searchTerm = "" }: CarrosselProps) {
 
                   {/* caption overlay */}
                   <div className="absolute inset-0 flex flex-col items-center justify-end pb-6 md:pb-4 pointer-events-none">
-                    <p className="text-black text-3xl font-bold px-3 py-0">{s.title}</p>
-                    <p className="text-black text-lg font-medium">
+                    <p className={`text-black text-3xl font-bold py-0 ${dmSerif.className}`}>{s.title}</p>
+                    <p className="text-black/60 text-lg font-medium">
                       <span className="font-bold">{s.subtitle.split(" - ")[0]}</span>
                       {" - " + s.subtitle.split(" - ")[1]}
                     </p>
@@ -123,10 +132,10 @@ export default function Carrossel({ searchTerm = "" }: CarrosselProps) {
         </div>
       </div>
 
-      <button onClick={scrollPrev} aria-label="Anterior" className="absolute -left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 text-black drop-shadow z-30 hover:bg-[#399BEB]">
+      <button onClick={scrollPrev} aria-label="Anterior" className="absolute -left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 text-black drop-shadow z-30 hover:bg-[#399BEB]  hidden md:block">
         <ChevronLeft size={14} />
       </button>
-      <button onClick={scrollNext} aria-label="Próximo" className="absolute -right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 text-black drop-shadow z-30 hover:bg-[#399BEB]">
+      <button onClick={scrollNext} aria-label="Próximo" className="absolute -right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 text-black drop-shadow z-30 hover:bg-[#399BEB] hidden md:block">
         <ChevronRight size={14} />
       </button>
 
