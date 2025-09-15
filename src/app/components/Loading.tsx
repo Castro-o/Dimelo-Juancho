@@ -30,6 +30,7 @@ export function Loading({ isFadingOut = false }: LoadingProps) {
             height={400}
             className="max-w-md w-full h-auto"
             priority
+            unoptimized
           />
         </div>
       </div>
