@@ -17,13 +17,13 @@ const slides = [
     src: "/jerridi/medellin.png",
     title: "Jerry Di",
     subtitle: "MEDELLIN - 24 OTC",
-    link: "https://www.tickeri.com",
+    link: "https://www.passline.com/eventos/jerry-di-en-concierto-medellin",
   },
   {
     src: "/jerridi/BOGOTA.png",
     title: "Jerry Di",
     subtitle: "BOGOTÁ - 27 OCT",
-    link: "https://www.tickeri.com",
+    link: "https://www.passline.com/eventos/jerry-di-en-concierto-bogota",
   },
 
   {
