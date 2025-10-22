@@ -49,7 +49,7 @@ const slides = [
     src: "/jerridi/santiago.png",
     title: "Jerry Di",
     subtitle: "SANTIAGO - 15 NOV",
-    link: "https://www.tickeri.com",
+    link: "https://www.passline.com/eventos/jerry-di",
   },
 
   {
